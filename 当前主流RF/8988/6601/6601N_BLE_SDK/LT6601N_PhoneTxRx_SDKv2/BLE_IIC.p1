@@ -1,0 +1,52 @@
+Version 3.2 HI-TECH Software Intermediate Code
+"32 LT8988drv.h
+[v _LT8988_WriteReg `(v  0 ef3`uc`uc`uc ]
+"35 LT8988drv.h
+[v _LT8988_ReadBUF `(uc  0 ef1`*uc ]
+[; ;LT8988drv.h: 20: extern unsigned char _RegH, _RegL;
+[; ;LT8988drv.h: 22: void DelayMs(unsigned char Tms);
+[; ;LT8988drv.h: 24: void LT8988_start(void);
+[; ;LT8988drv.h: 25: void LT8988_stop(void);
+[; ;LT8988drv.h: 26: void ack(void);
+[; ;LT8988drv.h: 27: void nack(void);
+[; ;LT8988drv.h: 30: void Send_Byte(unsigned char DATA);
+[; ;LT8988drv.h: 31: unsigned char Read_Byte(void);
+[; ;LT8988drv.h: 32: void LT8988_WriteReg(unsigned char reg, unsigned char H, unsigned char L);
+[; ;LT8988drv.h: 33: void LT8988_ReadReg(unsigned char reg);
+[; ;LT8988drv.h: 34: void LT8988_WriteBUF(unsigned char reg, unsigned char *pBuf, unsigned char len);
+[; ;LT8988drv.h: 35: unsigned char LT8988_ReadBUF(unsigned char *pBuf);
+[; ;LT8988drv.h: 37: void LT8988_INIT(void);
+[; ;LT8988drv.h: 38: void LT8988_regset(unsigned char dat1);
+[; ;LT8988drv.h: 39: void write_sync(void);
+[; ;LT8988drv.h: 41: unsigned char check_sum(unsigned char *buf, unsigned char len);
+[; ;LT8988drv.h: 42: void crc_sum(unsigned char *buf, unsigned char len);
+"2 BLE_IIC.C
+[v _LT8988_ble_write_reg `(v  1 ef3`uc`uc`uc ]
+{
+[; ;BLE_IIC.C: 2: void LT8988_ble_write_reg(unsigned char reg,unsigned char first,unsigned char second){
+[e :U _LT8988_ble_write_reg ]
+[v _reg `uc  1 r1 ]
+[v _first `uc  1 r2 ]
+[v _second `uc  1 r3 ]
+[f ]
+[; ;BLE_IIC.C: 4: LT8988_WriteReg(reg, first,second);
+"4
+[e ( _LT8988_WriteReg (3 , , _reg _first _second ]
+[; ;BLE_IIC.C: 6: };
+"6
+[e :UE 1 ]
+}
+"8
+[v _ble_read_fifo `(v  1 ef1`*uc ]
+{
+[; ;BLE_IIC.C: 8: void ble_read_fifo(unsigned char *buf){
+[e :U _ble_read_fifo ]
+[v _buf `*uc  1 r1 ]
+[f ]
+[; ;BLE_IIC.C: 10: LT8988_ReadBUF(buf);
+"10
+[e ( _LT8988_ReadBUF (1 _buf ]
+[; ;BLE_IIC.C: 13: };
+"13
+[e :UE 2 ]
+}

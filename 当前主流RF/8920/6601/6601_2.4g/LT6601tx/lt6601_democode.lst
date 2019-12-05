@@ -1,0 +1,1770 @@
+
+
+HI-TECH Software PIC PRO Macro Assembler V9.83 build 10920 
+                                                                                               Wed Dec 04 12:09:04 2019
+
+HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
+     1                           	processor	16F685
+     2                           	opt	pw 120
+     3                           	opt	pm
+     4                           	psect	idataBANK0,global,class=CODE,delta=2
+     5                           	psect	strings,global,class=STRING,delta=2
+     6                           	psect	cinit,global,class=CODE,delta=2
+     7                           	psect	bssCOMMON,global,class=COMMON,space=1,delta=1
+     8                           	psect	dataBANK0,global,class=BANK0,space=1,delta=1
+     9                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1
+    10                           	psect	maintext,global,class=CODE,delta=2
+    11                           	psect	text205,local,class=CODE,delta=2
+    12                           	psect	text206,local,class=CODE,delta=2
+    13                           	psect	swtext1,local,class=CONST,delta=2
+    14                           	psect	text207,local,class=CODE,delta=2
+    15                           	psect	text208,local,class=CODE,delta=2
+    16                           	psect	text209,local,class=CODE,delta=2
+    17                           	psect	text210,local,class=CODE,delta=2
+    18                           	psect	text211,local,class=CODE,delta=2
+    19                           	psect	text212,local,class=CODE,delta=2
+    20                           	psect	text213,local,class=CODE,delta=2
+    21                           	psect	text214,local,class=CODE,delta=2
+    22                           	psect	text215,local,class=CODE,delta=2
+    23                           	psect	intentry,global,class=CODE,delta=2
+    24                           	psect	text216,local,class=CODE,delta=2
+    25                           	psect	pa_nodes,global,class=CODE,delta=2
+    26                           	dabs	1,0x19D,1
+    27                           	dabs	1,0x19E,1
+    28                           	dabs	1,0x19E,1
+    29                           	dabs	1,0x19E,1
+    30                           	dabs	1,0x18C,1
+    31                           	dabs	1,0x19E,1
+    32                           	dabs	1,0x19E,1
+    33                           	dabs	1,0x19E,1
+    34                           	dabs	1,0x19E,1
+    35                           	dabs	1,0x19D,1
+    36                           	dabs	1,0x19D,1
+    37                           	dabs	1,0x19D,1
+    38                           	dabs	1,0x19D,1
+    39                           	dabs	1,0x19D,1
+    40                           	dabs	1,0x18C,1
+    41                           	dabs	1,0x7E,2
+    42  000A                     
+    43                           	psect	idataBANK0
+    44  0000                     __pidataBANK0:	
+    45                           
+    46                           	psect	strings
+    47  000B                     __pstrings:	
+    48  000B                     stringtab:	
+    49                           ;	global	stringdir,stringtab,__stringbase
+    50                           
+    51  000B                     stringcode:	
+    52                           ;	String table - string pointers are 1 byte each
+    53                           
+    54  000B                     stringdir:	
+    55  000B  3000               	movlw	high stringdir
+    56  000C  008A               	movwf	10
+    57  000D  0804               	movf	4,w
+    58  000E  0A84               	incf	4,f
+    59  000F  0782               	addwf	2,f
+    60  0010                     __stringbase:	
+    61  0010  3400               	retlw	0
+    62  0011                     _LDT8900config:	
+    63  0011  3400               	retlw	0
+    64  0012  346F               	retlw	111
+    65  0013  34E0               	retlw	224
+    66  0014  3401               	retlw	1
+    67  0015  3456               	retlw	86
+    68  0016  3481               	retlw	129
+    69  0017  3402               	retlw	2
+    70  0018  3466               	retlw	102
+    71  0019  3417               	retlw	23
+    72  001A  3404               	retlw	4
+    73  001B  349C               	retlw	156
+    74  001C  34C9               	retlw	201
+    75  001D  3405               	retlw	5
+    76  001E  3466               	retlw	102
+    77  001F  3437               	retlw	55
+    78  0020  3407               	retlw	7
+    79  0021  3400               	retlw	0
+    80  0022  3430               	retlw	48
+    81  0023  3408               	retlw	8
+    82  0024  346C               	retlw	108
+    83  0025  3490               	retlw	144
+    84  0026  3409               	retlw	9
+    85  0027  3448               	retlw	72
+    86  0028  3400               	retlw	0
+    87  0029  340A               	retlw	10
+    88  002A  347F               	retlw	127
+    89  002B  34FD               	retlw	253
+    90  002C  340B               	retlw	11
+    91  002D  3400               	retlw	0
+    92  002E  3408               	retlw	8
+    93  002F  340C               	retlw	12
+    94  0030  3400               	retlw	0
+    95  0031  3400               	retlw	0
+    96  0032  340D               	retlw	13
+    97  0033  3448               	retlw	72
+    98  0034  34BD               	retlw	189
+    99  0035  3416               	retlw	22
+   100  0036  3400               	retlw	0
+   101  0037  34FF               	retlw	255
+   102  0038  3417               	retlw	23
+   103  0039  3480               	retlw	128
+   104  003A  3405               	retlw	5
+   105  003B  3418               	retlw	24
+   106  003C  3400               	retlw	0
+   107  003D  3467               	retlw	103
+   108  003E  3419               	retlw	25
+   109  003F  3416               	retlw	22
+   110  0040  34DB               	retlw	219
+   111  0041  341A               	retlw	26
+   112  0042  3419               	retlw	25
+   113  0043  34E0               	retlw	224
+   114  0044  341B               	retlw	27
+   115  0045  3413               	retlw	19
+   116  0046  3400               	retlw	0
+   117  0047  341C               	retlw	28
+   118  0048  3418               	retlw	24
+   119  0049  3400               	retlw	0
+   120  004A  3420               	retlw	32
+   121  004B  3448               	retlw	72
+   122  004C  3408               	retlw	8
+   123  004D  3421               	retlw	33
+   124  004E  343F               	retlw	63
+   125  004F  34C7               	retlw	199
+   126  0050  3422               	retlw	34
+   127  0051  3420               	retlw	32
+   128  0052  3400               	retlw	0
+   129  0053  3423               	retlw	35
+   130  0054  3403               	retlw	3
+   131  0055  3400               	retlw	0
+   132  0056  3424               	retlw	36
+   133  0057  34AA               	retlw	170
+   134  0058  34AA               	retlw	170
+   135  0059  3425               	retlw	37
+   136  005A  34AA               	retlw	170
+   137  005B  34AA               	retlw	170
+   138  005C  3426               	retlw	38
+   139  005D  34AA               	retlw	170
+   140  005E  34AA               	retlw	170
+   141  005F  3427               	retlw	39
+   142  0060  34AA               	retlw	170
+   143  0061  34AA               	retlw	170
+   144  0062  3428               	retlw	40
+   145  0063  3444               	retlw	68
+   146  0064  3402               	retlw	2
+   147  0065  3429               	retlw	41
+   148  0066  34B0               	retlw	176
+   149  0067  3400               	retlw	0
+   150  0068  342A               	retlw	42
+   151  0069  34FD               	retlw	253
+   152  006A  34B0               	retlw	176
+   153  006B  342B               	retlw	43
+   154  006C  3400               	retlw	0
+   155  006D  340F               	retlw	15
+   156  006E  342C               	retlw	44
+   157  006F  3401               	retlw	1
+   158  0070  3401               	retlw	1
+   159  0071  342D               	retlw	45
+   160  0072  3401               	retlw	1
+   161  0073  3452               	retlw	82
+   162  0074  3434               	retlw	52
+   163  0075  3480               	retlw	128
+   164  0076  3480               	retlw	128
+   165  019D                     _PSTRCON	set	413	;_PSTRCON
+   166  019E                     _SRCON	set	414	;_SRCON
+   167  0CF5                     _C1SEN	set	3317	;_C1SEN
+   168  0CF4                     _C2REN	set	3316	;_C2REN
+   169  0C67                     _EEPGD	set	3175	;_EEPGD
+   170  0CF2                     _PULSR	set	3314	;_PULSR
+   171  0CF3                     _PULSS	set	3315	;_PULSS
+   172  0CF6                     _SR0	set	3318	;_SR0
+   173  0CF7                     _SR1	set	3319	;_SR1
+   174  0CE8                     _STRA	set	3304	;_STRA
+   175  0CE9                     _STRB	set	3305	;_STRB
+   176  0CEA                     _STRC	set	3306	;_STRC
+   177  0CEB                     _STRD	set	3307	;_STRD
+   178  0CEC                     _STRSYNC	set	3308	;_STRSYNC
+   179  0C62                     _WREN	set	3170	;_WREN
+   180  001F                     _ADCON0	set	31
+   181  0019                     _CMCON0	set	25
+   182  000B                     _INTCON	set	11
+   183  001B                     _MSCKCON	set	27
+   184  0005                     _PORTA	set	5
+   185  0007                     _PORTC	set	7
+   186  0010                     _T1CON	set	16
+   187  000F                     _TMR1H	set	15
+   188  000E                     _TMR1L	set	14
+   189  005F                     _GIE	set	95
+   190  005E                     _PEIE	set	94
+   191  002D                     _RA5	set	45
+   192  002E                     _RA6	set	46
+   193  002F                     _RA7	set	47
+   194  003A                     _RC2	set	58
+   195  003B                     _RC3	set	59
+   196  003D                     _RC5	set	61
+   197  0060                     _TMR1IF	set	96
+   198  0080                     _TMR1ON	set	128
+   199  009F                     _ADCON1	set	159
+   200  0091                     _ANSEL	set	145
+   201  0081                     _OPTION	set	129
+   202  008F                     _OSCCON	set	143
+   203  0085                     _TRISA	set	133
+   204  0087                     _TRISC	set	135
+   205  0095                     _WPUA	set	149
+   206  0088                     _WPUC	set	136
+   207  0460                     _TMR1IE	set	1120
+   208                           
+   209                           	psect	cinit
+   210  0139                     start_initialization:	
+   211  0139  3011               	movlw	17
+   212                           
+   213                           ; Clear objects allocated to COMMON
+   214  013A  01F9               	clrf	__pbssCOMMON& (0+127)
+   215  013B  01FA               	clrf	(__pbssCOMMON+1)& (0+127)
+   216  013C  01FB               	clrf	(__pbssCOMMON+2)& (0+127)
+   217                           
+   218                           ;initializer for _txdata
+   219  013D  00A0               	movwf	__pdataBANK0& (0+127)
+   220  013E  3022               	movlw	34
+   221  013F  00A1               	movwf	(__pdataBANK0+1)& (0+127)
+   222  0140  3033               	movlw	51
+   223  0141  00A2               	movwf	(__pdataBANK0+2)& (0+127)
+   224  0142  3044               	movlw	68
+   225  0143  00A3               	movwf	(__pdataBANK0+3)& (0+127)
+   226  0144  3055               	movlw	85
+   227  0145  00A4               	movwf	(__pdataBANK0+4)& (0+127)
+   228  0146  3066               	movlw	102
+   229  0147  00A5               	movwf	(__pdataBANK0+5)& (0+127)
+   230  0148  3077               	movlw	119
+   231  0149  00A6               	movwf	(__pdataBANK0+6)& (0+127)
+   232  014A  3088               	movlw	136
+   233  014B  00A7               	movwf	(__pdataBANK0+7)& (0+127)
+   234  014C  3099               	movlw	153
+   235  014D  00A8               	movwf	(__pdataBANK0+8)& (0+127)
+   236  014E  30AA               	movlw	170
+   237  014F  00A9               	movwf	(__pdataBANK0+9)& (0+127)
+   238  0150  30BB               	movlw	187
+   239  0151  00AA               	movwf	(__pdataBANK0+10)& (0+127)
+   240  0152  30CC               	movlw	204
+   241  0153  00AB               	movwf	(__pdataBANK0+11)& (0+127)
+   242  0154                     end_of_initialization:	
+   243                           ;End of C runtime variable initialization code
+   244                           
+   245  0154  0183               	clrf	3
+   246  0155  291A               	ljmp	_main	;jump to C main() function
+   247                           
+   248                           	psect	bssCOMMON
+   249  0079                     __pbssCOMMON:	
+   250  0079                     _RegH:	
+   251  0079                     	ds	1
+   252  007A                     _RegL:	
+   253  007A                     	ds	1
+   254  007B                     _T250uS:	
+   255  007B                     	ds	1
+   256                           
+   257                           	psect	dataBANK0
+   258  0020                     __pdataBANK0:	
+   259  0020                     _txdata:	
+   260  0020                     	ds	12
+   261                           
+   262                           	psect	cstackCOMMON
+   263  0070                     __pcstackCOMMON:	
+   264  0070                     ?_LT89XX_INIT:	
+   265  0070                     ?_LT89xx_ModeSet:	
+   266                           ; 0 bytes @ 0x0
+   267                           
+   268  0070                     ?_write_sync:	
+   269                           ; 0 bytes @ 0x0
+   270                           
+   271  0070                     ?_ISR:	
+   272                           ; 0 bytes @ 0x0
+   273                           
+   274  0070                     ??_ISR:	
+   275                           ; 0 bytes @ 0x0
+   276                           
+   277  0070                     ?_Init:	
+   278                           ; 0 bytes @ 0x0
+   279                           
+   280  0070                     ?_main:	
+   281                           ; 0 bytes @ 0x0
+   282                           
+   283  0070                     ?_DELAY_MS:	
+   284                           ; 0 bytes @ 0x0
+   285                           
+   286  0070                     ?_SPI_SendByte:	
+   287                           ; 0 bytes @ 0x0
+   288                           
+   289  0070                     ?_LT_ReadReg:	
+   290                           ; 0 bytes @ 0x0
+   291                           
+   292  0070                     ?_SPI_ReadByte:	
+   293                           ; 0 bytes @ 0x0
+   294                           
+   295                           
+   296                           ; 1 bytes @ 0x0
+   297  0070                     	ds	2
+   298  0072                     ??_Init:	
+   299  0072                     ??_DELAY_MS:	
+   300                           ; 0 bytes @ 0x2
+   301                           
+   302  0072                     ??_SPI_SendByte:	
+   303                           ; 0 bytes @ 0x2
+   304                           
+   305  0072                     ??_SPI_ReadByte:	
+   306                           ; 0 bytes @ 0x2
+   307                           
+   308  0072                     SPI_SendByte@buf:	
+   309                           ; 0 bytes @ 0x2
+   310                           
+   311  0072                     SPI_ReadByte@retvalue:	
+   312                           ; 1 bytes @ 0x2
+   313                           
+   314  0072                     DELAY_MS@dly:	
+   315                           ; 1 bytes @ 0x2
+   316                           
+   317                           
+   318                           ; 2 bytes @ 0x2
+   319  0072                     	ds	1
+   320  0073                     SPI_SendByte@mcnt:	
+   321  0073                     SPI_ReadByte@mcnt:	
+   322                           ; 1 bytes @ 0x3
+   323                           
+   324                           
+   325                           ; 1 bytes @ 0x3
+   326  0073                     	ds	1
+   327  0074                     ?_LT_WriteReg:	
+   328  0074                     ?_LT_WriteBUF:	
+   329                           ; 0 bytes @ 0x4
+   330                           
+   331  0074                     ??_LT_ReadReg:	
+   332                           ; 0 bytes @ 0x4
+   333                           
+   334  0074                     DELAY_MS@Tms:	
+   335                           ; 0 bytes @ 0x4
+   336                           
+   337  0074                     LT_ReadReg@reg:	
+   338                           ; 1 bytes @ 0x4
+   339                           
+   340  0074                     LT_WriteReg@H:	
+   341                           ; 1 bytes @ 0x4
+   342                           
+   343  0074                     LT_WriteBUF@pBuf:	
+   344                           ; 1 bytes @ 0x4
+   345                           
+   346                           
+   347                           ; 1 bytes @ 0x4
+   348  0074                     	ds	1
+   349  0075                     LT_WriteReg@L:	
+   350  0075                     LT_WriteBUF@len:	
+   351                           ; 1 bytes @ 0x5
+   352                           
+   353                           
+   354                           ; 1 bytes @ 0x5
+   355  0075                     	ds	1
+   356  0076                     ??_LT_WriteReg:	
+   357  0076                     ??_LT_WriteBUF:	
+   358                           ; 0 bytes @ 0x6
+   359                           
+   360  0076                     LT_WriteReg@reg:	
+   361                           ; 0 bytes @ 0x6
+   362                           
+   363                           
+   364                           ; 1 bytes @ 0x6
+   365  0076                     	ds	1
+   366  0077                     ??_LT89XX_INIT:	
+   367  0077                     ??_LT89xx_ModeSet:	
+   368                           ; 0 bytes @ 0x7
+   369                           
+   370  0077                     ??_write_sync:	
+   371                           ; 0 bytes @ 0x7
+   372                           
+   373  0077                     LT_WriteBUF@reg:	
+   374                           ; 0 bytes @ 0x7
+   375                           
+   376  0077                     LT89XX_INIT@CFG_CNT:	
+   377                           ; 1 bytes @ 0x7
+   378                           
+   379  0077                     LT89xx_ModeSet@dat1:	
+   380                           ; 1 bytes @ 0x7
+   381                           
+   382                           
+   383                           ; 1 bytes @ 0x7
+   384  0077                     	ds	1
+   385  0078                     LT_WriteBUF@i:	
+   386                           
+   387                           ; 1 bytes @ 0x8
+   388  0078                     	ds	1
+   389  0079                     ??_main:	
+   390                           
+   391                           	psect	maintext
+   392  011A                     __pmaintext:	
+   393                           ; 0 bytes @ 0x9
+   394 ;;Data sizes: Strings 0, constant 102, data 12, bss 3, persistent 0 stack 0
+   395 ;;Auto spaces:   Size  Autos    Used
+   396 ;; COMMON          14      9      12
+   397 ;; BANK0           80      0      12
+   398 ;; BANK1           32      0       0
+   399 ;;
+   400 ;; Pointer list with targets:
+   401 ;; LT_WriteBUF@pBuf	PTR unsigned char  size(1) Largest target is 12
+   402 ;;		 -> txdata(BANK0[12]), 
+   403 ;;
+   404 ;;
+   405 ;; Critical Paths under _main in COMMON
+   406 ;;
+   407 ;;   _main->_LT_WriteBUF
+   408 ;;   _write_sync->_LT_WriteReg
+   409 ;;   _LT89xx_ModeSet->_LT_WriteReg
+   410 ;;   _LT89XX_INIT->_LT_WriteReg
+   411 ;;   _LT_ReadReg->_SPI_SendByte
+   412 ;;   _LT_ReadReg->_SPI_ReadByte
+   413 ;;   _LT_WriteBUF->_SPI_SendByte
+   414 ;;   _LT_WriteReg->_SPI_SendByte
+   415 ;;
+   416 ;; Critical Paths under _ISR in COMMON
+   417 ;;
+   418 ;;   None.
+   419 ;;
+   420 ;; Critical Paths under _main in BANK0
+   421 ;;
+   422 ;;   None.
+   423 ;;
+   424 ;; Critical Paths under _ISR in BANK0
+   425 ;;
+   426 ;;   None.
+   427 ;;
+   428 ;; Critical Paths under _main in BANK1
+   429 ;;
+   430 ;;   None.
+   431 ;;
+   432 ;; Critical Paths under _ISR in BANK1
+   433 ;;
+   434 ;;   None.
+   435 ;;
+   436 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   437 ;;
+   438 ;;
+   439 ;;Call Graph Tables:
+   440 ;;
+   441 ;; ---------------------------------------------------------------------------------
+   442 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   443 ;; ---------------------------------------------------------------------------------
+   444 ;; (0) _main                                                 1     1      0    1087
+   445 ;;                               _Init
+   446 ;;                        _LT89XX_INIT
+   447 ;;                     _LT89xx_ModeSet
+   448 ;;                         _write_sync
+   449 ;;                        _LT_WriteReg
+   450 ;;                        _LT_WriteBUF
+   451 ;; ---------------------------------------------------------------------------------
+   452 ;; (1) _write_sync                                           0     0      0     135
+   453 ;;                        _LT_WriteReg
+   454 ;; ---------------------------------------------------------------------------------
+   455 ;; (1) _LT89xx_ModeSet                                       1     1      0     157
+   456 ;;                                              7 COMMON     1     1      0
+   457 ;;                        _LT_WriteReg
+   458 ;; ---------------------------------------------------------------------------------
+   459 ;; (1) _LT89XX_INIT                                          1     1      0     457
+   460 ;;                                              7 COMMON     1     1      0
+   461 ;;                           _DELAY_MS
+   462 ;;                        _LT_WriteReg
+   463 ;;                         _LT_ReadReg
+   464 ;; ---------------------------------------------------------------------------------
+   465 ;; (2) _LT_ReadReg                                           1     1      0     163
+   466 ;;                                              4 COMMON     1     1      0
+   467 ;;                       _SPI_SendByte
+   468 ;;                       _SPI_ReadByte
+   469 ;; ---------------------------------------------------------------------------------
+   470 ;; (1) _LT_WriteBUF                                          5     3      2     203
+   471 ;;                                              4 COMMON     5     3      2
+   472 ;;                       _SPI_SendByte
+   473 ;; ---------------------------------------------------------------------------------
+   474 ;; (1) _LT_WriteReg                                          3     1      2     135
+   475 ;;                                              4 COMMON     3     1      2
+   476 ;;                       _SPI_SendByte
+   477 ;; ---------------------------------------------------------------------------------
+   478 ;; (3) _SPI_ReadByte                                         2     2      0      72
+   479 ;;                                              2 COMMON     2     2      0
+   480 ;; ---------------------------------------------------------------------------------
+   481 ;; (2) _SPI_SendByte                                         2     2      0      69
+   482 ;;                                              2 COMMON     2     2      0
+   483 ;; ---------------------------------------------------------------------------------
+   484 ;; (2) _DELAY_MS                                             3     3      0      47
+   485 ;;                                              2 COMMON     3     3      0
+   486 ;; ---------------------------------------------------------------------------------
+   487 ;; (1) _Init                                                 0     0      0       0
+   488 ;; ---------------------------------------------------------------------------------
+   489 ;; Estimated maximum stack depth 3
+   490 ;; ---------------------------------------------------------------------------------
+   491 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   492 ;; ---------------------------------------------------------------------------------
+   493 ;; (4) _ISR                                                  2     2      0       0
+   494 ;;                                              0 COMMON     2     2      0
+   495 ;; ---------------------------------------------------------------------------------
+   496 ;; Estimated maximum stack depth 4
+   497 ;; ---------------------------------------------------------------------------------
+   498 ;; Call Graph Graphs:
+   499 ;; _main (ROOT)
+   500 ;;   _Init
+   501 ;;   _LT89XX_INIT
+   502 ;;     _DELAY_MS
+   503 ;;     _LT_WriteReg
+   504 ;;       _SPI_SendByte
+   505 ;;     _LT_ReadReg
+   506 ;;       _SPI_SendByte
+   507 ;;       _SPI_ReadByte
+   508 ;;   _LT89xx_ModeSet
+   509 ;;     _LT_WriteReg
+   510 ;;       _SPI_SendByte
+   511 ;;   _write_sync
+   512 ;;     _LT_WriteReg
+   513 ;;       _SPI_SendByte
+   514 ;;   _LT_WriteReg
+   515 ;;     _SPI_SendByte
+   516 ;;   _LT_WriteBUF
+   517 ;;     _SPI_SendByte
+   518 ;;
+   519 ;; _ISR (ROOT)
+   520 ;;
+   521 ;; Address spaces:
+   522 ;;Name               Size   Autos  Total    Cost      Usage
+   523 ;;SFR2                 0      0       0       5        0.0%
+   524 ;;BITSFR2              0      0       0       5        0.0%
+   525 ;;SFR1                 0      0       0       2        0.0%
+   526 ;;BITSFR1              0      0       0       2        0.0%
+   527 ;;BANK1               20      0       0       6        0.0%
+   528 ;;BITBANK1            20      0       0       5        0.0%
+   529 ;;CODE                 0      0       0       0        0.0%
+   530 ;;DATA                 0      0      1B       8        0.0%
+   531 ;;ABS                  0      0      18       7        0.0%
+   532 ;;NULL                 0      0       0       0        0.0%
+   533 ;;STACK                0      0       3       2        0.0%
+   534 ;;BANK0               50      0       C       4       15.0%
+   535 ;;BITBANK0            50      0       0       3        0.0%
+   536 ;;SFR0                 0      0       0       1        0.0%
+   537 ;;BITSFR0              0      0       0       1        0.0%
+   538 ;;COMMON               E      9       C       1       85.7%
+   539 ;;BITCOMMON            E      0       0       0        0.0%
+   540 ;;EEDATA             100      0       0       0        0.0%
+   541                           
+   542                           
+   543 ;; *************** function _main *****************
+   544 ;; Defined at:
+   545 ;;		line 105 in file "main.c"
+   546 ;; Parameters:    Size  Location     Type
+   547 ;;		None
+   548 ;; Auto vars:     Size  Location     Type
+   549 ;;  I               1    0        unsigned char 
+   550 ;; Return value:  Size  Location     Type
+   551 ;;		None               void
+   552 ;; Registers used:
+   553 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+   554 ;; Tracked objects:
+   555 ;;		On entry : 17F/0
+   556 ;;		On exit  : 17F/0
+   557 ;;		Unchanged: FFE80/0
+   558 ;; Data sizes:     COMMON   BANK0   BANK1
+   559 ;;      Params:         0       0       0
+   560 ;;      Locals:         0       0       0
+   561 ;;      Temps:          0       0       0
+   562 ;;      Totals:         0       0       0
+   563 ;;Total ram usage:        0 bytes
+   564 ;; Hardware stack levels required when called:    4
+   565 ;; This function calls:
+   566 ;;		_Init
+   567 ;;		_LT89XX_INIT
+   568 ;;		_LT89xx_ModeSet
+   569 ;;		_write_sync
+   570 ;;		_LT_WriteReg
+   571 ;;		_LT_WriteBUF
+   572 ;; This function is called by:
+   573 ;;		Startup code after reset
+   574 ;; This function uses a non-reentrant model
+   575 ;;
+   576  011A                     _main:	
+   577                           
+   578                           ;main.c: 106: unsigned char I;
+   579                           ;main.c: 107: Init();
+   580                           
+   581                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+   582  011A  20F0               	fcall	_Init
+   583                           
+   584                           ;main.c: 108: LT89XX_INIT();
+   585  011B  20C3               	fcall	_LT89XX_INIT
+   586                           
+   587                           ;main.c: 109: LT89xx_ModeSet(0x19);
+   588  011C  3019               	movlw	25
+   589  011D  2077               	fcall	_LT89xx_ModeSet
+   590                           
+   591                           ;main.c: 110: write_sync();
+   592  011E  2156               	fcall	_write_sync
+   593  011F                     l3190:	
+   594                           
+   595                           ;main.c: 113: if(T250uS>40){
+   596  011F  3029               	movlw	41
+   597  0120  027B               	subwf	_T250uS,w
+   598  0121  1C03               	skipc
+   599  0122  291F               	goto	l3190
+   600  0123  3020               	movlw	32
+   601                           
+   602                           ;main.c: 114: T250uS=0;
+   603  0124  01FB               	clrf	_T250uS
+   604                           
+   605                           ;main.c: 115: RC5=!RC5;
+   606  0125  0687               	xorwf	7,f
+   607  0126  3007               	movlw	7
+   608                           
+   609                           ;main.c: 117: LT_WriteReg(7,0,0);
+   610  0127  01F4               	clrf	?_LT_WriteReg
+   611  0128  01F5               	clrf	?_LT_WriteReg+1
+   612  0129  21DD               	fcall	_LT_WriteReg
+   613                           
+   614                           ;main.c: 118: LT89xx_ModeSet(0x0e);
+   615  012A  300E               	movlw	14
+   616  012B  2077               	fcall	_LT89xx_ModeSet
+   617                           
+   618                           ;main.c: 119: LT_WriteBUF(50, txdata, 11);
+   619  012C  3020               	movlw	_txdata& (0+255)
+   620  012D  00F4               	movwf	?_LT_WriteBUF
+   621  012E  300B               	movlw	11
+   622  012F  00F5               	movwf	?_LT_WriteBUF+1
+   623  0130  3032               	movlw	50
+   624  0131  2182               	fcall	_LT_WriteBUF
+   625  0132  3046               	movlw	70
+   626                           
+   627                           ;main.c: 121: LT_WriteReg(7,0x01,70);
+   628  0133  01F4               	clrf	?_LT_WriteReg
+   629  0134  0AF4               	incf	?_LT_WriteReg,f
+   630  0135  00F5               	movwf	?_LT_WriteReg+1
+   631  0136  3007               	movlw	7
+   632  0137  21DD               	fcall	_LT_WriteReg
+   633  0138  291F               	goto	l3190
+   634  0139                     __end_of_main:	
+   635                           
+   636                           	psect	text205
+   637  0156                     __ptext205:	
+   638 ;; =============== function _main ends ============
+   639                           
+   640                           
+   641 ;; *************** function _write_sync *****************
+   642 ;; Defined at:
+   643 ;;		line 246 in file "lt89xxdrvspi.c"
+   644 ;; Parameters:    Size  Location     Type
+   645 ;;		None
+   646 ;; Auto vars:     Size  Location     Type
+   647 ;;		None
+   648 ;; Return value:  Size  Location     Type
+   649 ;;		None               void
+   650 ;; Registers used:
+   651 ;;		wreg, status,2, status,0, pclath, cstack
+   652 ;; Tracked objects:
+   653 ;;		On entry : 17F/0
+   654 ;;		On exit  : 17F/0
+   655 ;;		Unchanged: FFE80/0
+   656 ;; Data sizes:     COMMON   BANK0   BANK1
+   657 ;;      Params:         0       0       0
+   658 ;;      Locals:         0       0       0
+   659 ;;      Temps:          0       0       0
+   660 ;;      Totals:         0       0       0
+   661 ;;Total ram usage:        0 bytes
+   662 ;; Hardware stack levels used:    1
+   663 ;; Hardware stack levels required when called:    3
+   664 ;; This function calls:
+   665 ;;		_LT_WriteReg
+   666 ;; This function is called by:
+   667 ;;		_main
+   668 ;; This function uses a non-reentrant model
+   669 ;;
+   670  0156                     _write_sync:	
+   671                           
+   672                           ;lt89xxdrvspi.c: 248: LT_WriteReg(36, 0x33, 0x33);
+   673                           
+   674                           ; Regs used in _write_sync: [wreg+status,2+status,0+pclath+cstack]
+   675  0156  3033               	movlw	51
+   676  0157  00F4               	movwf	?_LT_WriteReg
+   677  0158  00F5               	movwf	?_LT_WriteReg+1
+   678  0159  3024               	movlw	36
+   679  015A  21DD               	fcall	_LT_WriteReg
+   680                           
+   681                           ;lt89xxdrvspi.c: 249: LT_WriteReg(37, 0xaa, 0xaa);
+   682  015B  30AA               	movlw	170
+   683  015C  00F4               	movwf	?_LT_WriteReg
+   684  015D  00F5               	movwf	?_LT_WriteReg+1
+   685  015E  3025               	movlw	37
+   686  015F  21DD               	fcall	_LT_WriteReg
+   687                           
+   688                           ;lt89xxdrvspi.c: 250: LT_WriteReg(38, 0x55, 0x01);
+   689  0160  3055               	movlw	85
+   690  0161  00F4               	movwf	?_LT_WriteReg
+   691  0162  3026               	movlw	38
+   692  0163  01F5               	clrf	?_LT_WriteReg+1
+   693  0164  0AF5               	incf	?_LT_WriteReg+1,f
+   694  0165  21DD               	fcall	_LT_WriteReg
+   695                           
+   696                           ;lt89xxdrvspi.c: 251: LT_WriteReg(39, 0x10, 0x01);
+   697  0166  3010               	movlw	16
+   698  0167  00F4               	movwf	?_LT_WriteReg
+   699  0168  3027               	movlw	39
+   700  0169  01F5               	clrf	?_LT_WriteReg+1
+   701  016A  0AF5               	incf	?_LT_WriteReg+1,f
+   702  016B  29DD               	ljmp	_LT_WriteReg
+   703  016C                     __end_of_write_sync:	
+   704                           
+   705                           	psect	text206
+   706  0077                     __ptext206:	
+   707 ;; =============== function _write_sync ends ============
+   708                           
+   709                           
+   710 ;; *************** function _LT89xx_ModeSet *****************
+   711 ;; Defined at:
+   712 ;;		line 198 in file "lt89xxdrvspi.c"
+   713 ;; Parameters:    Size  Location     Type
+   714 ;;  dat1            1    wreg     unsigned char 
+   715 ;; Auto vars:     Size  Location     Type
+   716 ;;  dat1            1    7[COMMON] unsigned char 
+   717 ;; Return value:  Size  Location     Type
+   718 ;;		None               void
+   719 ;; Registers used:
+   720 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+   721 ;; Tracked objects:
+   722 ;;		On entry : 17F/0
+   723 ;;		On exit  : 17F/0
+   724 ;;		Unchanged: FFE80/0
+   725 ;; Data sizes:     COMMON   BANK0   BANK1
+   726 ;;      Params:         0       0       0
+   727 ;;      Locals:         1       0       0
+   728 ;;      Temps:          0       0       0
+   729 ;;      Totals:         1       0       0
+   730 ;;Total ram usage:        1 bytes
+   731 ;; Hardware stack levels used:    1
+   732 ;; Hardware stack levels required when called:    3
+   733 ;; This function calls:
+   734 ;;		_LT_WriteReg
+   735 ;; This function is called by:
+   736 ;;		_main
+   737 ;; This function uses a non-reentrant model
+   738 ;;
+   739  0077                     _LT89xx_ModeSet:	
+   740                           
+   741                           ; Regs used in _LT89xx_ModeSet: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+   742                           ;LT89xx_ModeSet@dat1 stored from wreg
+   743  0077  00F7               	movwf	LT89xx_ModeSet@dat1
+   744                           
+   745                           ; Switch size 1, requested type "space"
+   746                           ; Number of cases is 9, Range of values is 14 to 25
+   747                           ; switch strategies available:
+   748                           ; Name         Instructions Cycles
+   749                           ; direct_byte           21     9 (fixed)
+   750                           ; simple_byte           28    15 (average)
+   751                           ; jumptable            263     9 (fixed)
+   752                           ;	Chosen strategy is direct_byte
+   753                           
+   754                           ;lt89xxdrvspi.c: 239: break;
+   755                           
+   756                           ;lt89xxdrvspi.c: 201: switch(dat1)
+   757  0078  3EF2               	addlw	-14
+   758  0079  1C03               	skipc
+   759  007A  0008               	return
+   760  007B  0084               	movwf	4
+   761  007C  300C               	movlw	12
+   762  007D  0204               	subwf	4,w
+   763  007E  1803               	skipnc
+   764  007F  0008               	return
+   765  0080  3001               	movlw	high S3214
+   766  0081  008A               	movwf	10
+   767  0082  30D1               	movlw	low S3214
+   768  0083  0704               	addwf	4,w
+   769  0084  0082               	movwf	2
+   770  0085                     l1774:	
+   771  0085  0008               	return
+   772  0086                     l3160:	
+   773  0086  3007               	movlw	7
+   774                           
+   775                           ;lt89xxdrvspi.c: 204: LT_WriteReg(7, 0x00, 0x00);
+   776  0087  01F4               	clrf	?_LT_WriteReg
+   777  0088  01F5               	clrf	?_LT_WriteReg+1
+   778  0089  21DD               	fcall	_LT_WriteReg
+   779                           
+   780                           ;lt89xxdrvspi.c: 205: LT_WriteReg(27, 0x13, 0x00);
+   781  008A  3013               	movlw	19
+   782  008B  00F4               	movwf	?_LT_WriteReg
+   783  008C  301B               	movlw	27
+   784  008D  01F5               	clrf	?_LT_WriteReg+1
+   785  008E  21DD               	fcall	_LT_WriteReg
+   786                           
+   787                           ;lt89xxdrvspi.c: 206: LT_WriteReg(35, 0x43, 0x00);
+   788  008F  3043               	movlw	67
+   789  0090  00F4               	movwf	?_LT_WriteReg
+   790  0091  3023               	movlw	35
+   791  0092  01F5               	clrf	?_LT_WriteReg+1
+   792  0093  29DD               	ljmp	_LT_WriteReg
+   793  0094                     l3162:	
+   794                           ;lt89xxdrvspi.c: 207: break;
+   795                           
+   796                           
+   797                           ;lt89xxdrvspi.c: 215: LT_WriteReg(52, 0x80, 0x80);
+   798  0094  3080               	movlw	128
+   799  0095  00F4               	movwf	?_LT_WriteReg
+   800  0096  00F5               	movwf	?_LT_WriteReg+1
+   801  0097  3034               	movlw	52
+   802  0098  29DD               	ljmp	_LT_WriteReg
+   803  0099                     l3164:	
+   804                           ;lt89xxdrvspi.c: 216: break;
+   805                           
+   806  0099  3007               	movlw	7
+   807                           
+   808                           ;lt89xxdrvspi.c: 218: LT_WriteReg(7, 0x00, 0x00);
+   809  009A  01F4               	clrf	?_LT_WriteReg
+   810  009B  01F5               	clrf	?_LT_WriteReg+1
+   811  009C  29DD               	ljmp	_LT_WriteReg
+   812  009D                     l3166:	
+   813                           ;lt89xxdrvspi.c: 219: break;
+   814                           
+   815  009D  302C               	movlw	44
+   816                           
+   817                           ;lt89xxdrvspi.c: 221: LT_WriteReg(44, 0x01, 0x01);
+   818  009E  01F4               	clrf	?_LT_WriteReg
+   819  009F  0AF4               	incf	?_LT_WriteReg,f
+   820  00A0  01F5               	clrf	?_LT_WriteReg+1
+   821  00A1  0AF5               	incf	?_LT_WriteReg+1,f
+   822  00A2  21DD               	fcall	_LT_WriteReg
+   823                           
+   824                           ;lt89xxdrvspi.c: 222: LT_WriteReg(45, 0x05, 0x52);
+   825  00A3  20B9               	fcall	PL2	;call to abstracted procedure
+   826  00A4  29DD               	ljmp	_LT_WriteReg
+   827  00A5                     l3168:	
+   828                           ;lt89xxdrvspi.c: 223: break;
+   829                           
+   830                           
+   831                           ;lt89xxdrvspi.c: 225: LT_WriteReg(44, 0x02, 0x01);
+   832  00A5  3002               	movlw	2
+   833  00A6  20BE               	fcall	PL3	;call to abstracted procedure
+   834  00A7  21DD               	fcall	_LT_WriteReg
+   835                           
+   836                           ;lt89xxdrvspi.c: 226: LT_WriteReg(45, 0x05, 0x52);
+   837  00A8  20B9               	fcall	PL2	;call to abstracted procedure
+   838  00A9  29DD               	ljmp	_LT_WriteReg
+   839  00AA                     l3170:	
+   840                           ;lt89xxdrvspi.c: 227: break;
+   841                           
+   842                           
+   843                           ;lt89xxdrvspi.c: 229: LT_WriteReg(44, 0x04, 0x01);
+   844  00AA  3004               	movlw	4
+   845  00AB  20BE               	fcall	PL3	;call to abstracted procedure
+   846  00AC  21DD               	fcall	_LT_WriteReg
+   847                           
+   848                           ;lt89xxdrvspi.c: 230: LT_WriteReg(45, 0x05, 0x52);
+   849  00AD  20B9               	fcall	PL2	;call to abstracted procedure
+   850  00AE  29DD               	ljmp	_LT_WriteReg
+   851  00AF                     l3172:	
+   852                           ;lt89xxdrvspi.c: 231: break;
+   853                           
+   854                           
+   855                           ;lt89xxdrvspi.c: 233: LT_WriteReg(44, 0x08, 0x01);
+   856  00AF  3008               	movlw	8
+   857  00B0  20BE               	fcall	PL3	;call to abstracted procedure
+   858  00B1  21DD               	fcall	_LT_WriteReg
+   859                           
+   860                           ;lt89xxdrvspi.c: 234: LT_WriteReg(45, 0x05, 0x52);
+   861  00B2  20B9               	fcall	PL2	;call to abstracted procedure
+   862  00B3  29DD               	ljmp	_LT_WriteReg
+   863  00B4                     l3174:	
+   864                           ;lt89xxdrvspi.c: 235: break;
+   865                           
+   866                           
+   867                           ;lt89xxdrvspi.c: 237: LT_WriteReg(44, 0x10, 0x01);
+   868  00B4  3010               	movlw	16
+   869  00B5  20BE               	fcall	PL3	;call to abstracted procedure
+   870  00B6  21DD               	fcall	_LT_WriteReg
+   871                           
+   872                           ;lt89xxdrvspi.c: 238: LT_WriteReg(45, 0x05, 0x52);
+   873  00B7  20B9               	fcall	PL2	;call to abstracted procedure
+   874  00B8  29DD               	ljmp	_LT_WriteReg
+   875  00B9                     __end_of_LT89xx_ModeSet:	
+   876  00B9                     PL2:	
+   877  00B9  3005               	movlw	5
+   878  00BA  00F4               	movwf	?_LT_WriteReg
+   879  00BB  3052               	movlw	82
+   880  00BC  00F5               	movwf	?_LT_WriteReg+1
+   881  00BD  342D               	retlw	45
+   882  00BE                     PL3:	
+   883  00BE  00F4               	movwf	?_LT_WriteReg
+   884  00BF  302C               	movlw	44
+   885  00C0  01F5               	clrf	?_LT_WriteReg+1
+   886  00C1  0AF5               	incf	?_LT_WriteReg+1,f
+   887  00C2  0008               	return
+   888                           
+   889                           	psect	swtext1
+   890  01D1                     __pswtext1:	
+   891  01D1                     S3214:	
+   892  01D1  2894               	ljmp	l3162
+   893  01D2  2885               	ljmp	l1774
+   894  01D3  2885               	ljmp	l1774
+   895  01D4  2885               	ljmp	l1774
+   896  01D5  2886               	ljmp	l3160
+   897  01D6  2899               	ljmp	l3164
+   898  01D7  2885               	ljmp	l1774
+   899  01D8  289D               	ljmp	l3166
+   900  01D9  28A5               	ljmp	l3168
+   901  01DA  28AA               	ljmp	l3170
+   902  01DB  28AF               	ljmp	l3172
+   903  01DC  28B4               	ljmp	l3174
+   904                           
+   905                           	psect	text207
+   906  00C3                     __ptext207:	
+   907 ;; =============== function _LT89xx_ModeSet ends ============
+   908                           
+   909                           
+   910 ;; *************** function _LT89XX_INIT *****************
+   911 ;; Defined at:
+   912 ;;		line 174 in file "lt89xxdrvspi.c"
+   913 ;; Parameters:    Size  Location     Type
+   914 ;;		None
+   915 ;; Auto vars:     Size  Location     Type
+   916 ;;  CFG_CNT         1    7[COMMON] unsigned char 
+   917 ;; Return value:  Size  Location     Type
+   918 ;;		None               void
+   919 ;; Registers used:
+   920 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+   921 ;; Tracked objects:
+   922 ;;		On entry : 17F/20
+   923 ;;		On exit  : 17F/0
+   924 ;;		Unchanged: FFE80/0
+   925 ;; Data sizes:     COMMON   BANK0   BANK1
+   926 ;;      Params:         0       0       0
+   927 ;;      Locals:         1       0       0
+   928 ;;      Temps:          0       0       0
+   929 ;;      Totals:         1       0       0
+   930 ;;Total ram usage:        1 bytes
+   931 ;; Hardware stack levels used:    1
+   932 ;; Hardware stack levels required when called:    3
+   933 ;; This function calls:
+   934 ;;		_DELAY_MS
+   935 ;;		_LT_WriteReg
+   936 ;;		_LT_ReadReg
+   937 ;; This function is called by:
+   938 ;;		_main
+   939 ;; This function uses a non-reentrant model
+   940 ;;
+   941  00C3                     _LT89XX_INIT:	
+   942  00C3                     l1754:	
+   943                           ; Regs used in _LT89XX_INIT: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+   944                           ;lt89xxdrvspi.c: 175: unsigned char CFG_CNT;
+   945                           ;lt89xxdrvspi.c: 178: while(1)
+   946                           
+   947  00C3  300A               	movlw	10
+   948                           
+   949                           ;lt89xxdrvspi.c: 179: {
+   950                           ;lt89xxdrvspi.c: 181: RA7 = 0; DELAY_MS(10);
+   951  00C4  1283               	bcf	3,5	;RP0=0, select bank0
+   952  00C5  1385               	bcf	5,7
+   953  00C6  21AA               	fcall	_DELAY_MS
+   954  00C7  3064               	movlw	100
+   955                           
+   956                           ;lt89xxdrvspi.c: 182: RA7 = 1; DELAY_MS(100);
+   957  00C8  1785               	bsf	5,7
+   958  00C9  21AA               	fcall	_DELAY_MS
+   959                           
+   960                           ;lt89xxdrvspi.c: 185: for(CFG_CNT=0;CFG_CNT<34;CFG_CNT++)
+   961  00CA  01F7               	clrf	LT89XX_INIT@CFG_CNT
+   962  00CB                     l3144:	
+   963                           
+   964                           ;lt89xxdrvspi.c: 186: {
+   965                           ;lt89xxdrvspi.c: 187: LT_WriteReg(LDT8900config[CFG_CNT][0],LDT8900config[CFG_CNT][1],LD
+      +                          T8900config[CFG_CNT][2]);
+   966  00CB  0877               	movf	LT89XX_INIT@CFG_CNT,w
+   967  00CC  0777               	addwf	LT89XX_INIT@CFG_CNT,w
+   968  00CD  0777               	addwf	LT89XX_INIT@CFG_CNT,w
+   969  00CE  3E02               	addlw	low ((_LDT8900config-__stringbase+1))
+   970  00CF  0084               	movwf	4
+   971  00D0  200B               	fcall	stringdir
+   972  00D1  00F4               	movwf	?_LT_WriteReg
+   973  00D2  0877               	movf	LT89XX_INIT@CFG_CNT,w
+   974  00D3  0777               	addwf	LT89XX_INIT@CFG_CNT,w
+   975  00D4  0777               	addwf	LT89XX_INIT@CFG_CNT,w
+   976  00D5  3E03               	addlw	low ((_LDT8900config-__stringbase+2))
+   977  00D6  0084               	movwf	4
+   978  00D7  200B               	fcall	stringdir
+   979  00D8  00F5               	movwf	?_LT_WriteReg+1
+   980  00D9  0877               	movf	LT89XX_INIT@CFG_CNT,w
+   981  00DA  0777               	addwf	LT89XX_INIT@CFG_CNT,w
+   982  00DB  0777               	addwf	LT89XX_INIT@CFG_CNT,w
+   983  00DC  3E01               	addlw	low (_LDT8900config-__stringbase)
+   984  00DD  0084               	movwf	4
+   985  00DE  200B               	fcall	stringdir
+   986  00DF  21DD               	fcall	_LT_WriteReg
+   987  00E0  3022               	movlw	34
+   988  00E1  0AF7               	incf	LT89XX_INIT@CFG_CNT,f
+   989  00E2  0277               	subwf	LT89XX_INIT@CFG_CNT,w
+   990  00E3  1C03               	skipc
+   991  00E4  28CB               	goto	l3144
+   992                           
+   993                           ;lt89xxdrvspi.c: 189: }
+   994                           ;lt89xxdrvspi.c: 191: LT_ReadReg(0);
+   995  00E5  3000               	movlw	0
+   996  00E6  21E8               	fcall	_LT_ReadReg
+   997                           
+   998                           ;lt89xxdrvspi.c: 192: if(RegH==0x6F&&RegL==0XE0)
+   999  00E7  0879               	movf	_RegH,w
+  1000  00E8  3A6F               	xorlw	111
+  1001  00E9  1D03               	skipz
+  1002  00EA  28C3               	goto	l1754
+  1003  00EB  087A               	movf	_RegL,w
+  1004  00EC  3AE0               	xorlw	224
+  1005  00ED  1903               	btfsc	3,2
+  1006  00EE  0008               	return
+  1007  00EF  28C3               	goto	l1754
+  1008  00F0                     __end_of_LT89XX_INIT:	
+  1009                           
+  1010                           	psect	text208
+  1011  01E8                     __ptext208:	
+  1012 ;; =============== function _LT89XX_INIT ends ============
+  1013                           
+  1014                           
+  1015 ;; *************** function _LT_ReadReg *****************
+  1016 ;; Defined at:
+  1017 ;;		line 68 in file "lt89xxdrvspi.c"
+  1018 ;; Parameters:    Size  Location     Type
+  1019 ;;  reg             1    wreg     unsigned char 
+  1020 ;; Auto vars:     Size  Location     Type
+  1021 ;;  reg             1    4[COMMON] unsigned char 
+  1022 ;; Return value:  Size  Location     Type
+  1023 ;;		None               void
+  1024 ;; Registers used:
+  1025 ;;		wreg, status,2, status,0, pclath, cstack
+  1026 ;; Tracked objects:
+  1027 ;;		On entry : 17F/0
+  1028 ;;		On exit  : 17F/0
+  1029 ;;		Unchanged: FFE80/0
+  1030 ;; Data sizes:     COMMON   BANK0   BANK1
+  1031 ;;      Params:         0       0       0
+  1032 ;;      Locals:         1       0       0
+  1033 ;;      Temps:          0       0       0
+  1034 ;;      Totals:         1       0       0
+  1035 ;;Total ram usage:        1 bytes
+  1036 ;; Hardware stack levels used:    1
+  1037 ;; Hardware stack levels required when called:    2
+  1038 ;; This function calls:
+  1039 ;;		_SPI_SendByte
+  1040 ;;		_SPI_ReadByte
+  1041 ;; This function is called by:
+  1042 ;;		_LT89XX_INIT
+  1043 ;; This function uses a non-reentrant model
+  1044 ;;
+  1045  01E8                     _LT_ReadReg:	
+  1046                           
+  1047                           ; Regs used in _LT_ReadReg: [wreg+status,2+status,0+pclath+cstack]
+  1048                           ;LT_ReadReg@reg stored from wreg
+  1049  01E8  00F4               	movwf	LT_ReadReg@reg
+  1050                           
+  1051                           ;lt89xxdrvspi.c: 69: RC2=0;
+  1052  01E9  1107               	bcf	7,2
+  1053                           
+  1054                           ;lt89xxdrvspi.c: 70: SPI_SendByte(reg|0x80);
+  1055  01EA  3880               	iorlw	128
+  1056  01EB  21BE               	fcall	_SPI_SendByte
+  1057                           
+  1058                           ;lt89xxdrvspi.c: 71: RegH=SPI_ReadByte();
+  1059  01EC  2196               	fcall	_SPI_ReadByte
+  1060  01ED  00F9               	movwf	_RegH
+  1061                           
+  1062                           ;lt89xxdrvspi.c: 72: RegL=SPI_ReadByte();
+  1063  01EE  2196               	fcall	_SPI_ReadByte
+  1064  01EF  00FA               	movwf	_RegL
+  1065                           
+  1066                           ;lt89xxdrvspi.c: 73: RC2=1;
+  1067  01F0  1507               	bsf	7,2
+  1068  01F1  0008               	return
+  1069  01F2                     __end_of_LT_ReadReg:	
+  1070                           
+  1071                           	psect	text209
+  1072  0182                     __ptext209:	
+  1073 ;; =============== function _LT_ReadReg ends ============
+  1074                           
+  1075                           
+  1076 ;; *************** function _LT_WriteBUF *****************
+  1077 ;; Defined at:
+  1078 ;;		line 89 in file "lt89xxdrvspi.c"
+  1079 ;; Parameters:    Size  Location     Type
+  1080 ;;  reg             1    wreg     unsigned char 
+  1081 ;;  pBuf            1    4[COMMON] PTR unsigned char 
+  1082 ;;		 -> txdata(12), 
+  1083 ;;  len             1    5[COMMON] unsigned char 
+  1084 ;; Auto vars:     Size  Location     Type
+  1085 ;;  reg             1    7[COMMON] unsigned char 
+  1086 ;;  i               1    8[COMMON] unsigned char 
+  1087 ;; Return value:  Size  Location     Type
+  1088 ;;		None               void
+  1089 ;; Registers used:
+  1090 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+  1091 ;; Tracked objects:
+  1092 ;;		On entry : 17F/0
+  1093 ;;		On exit  : 17F/0
+  1094 ;;		Unchanged: FFE80/0
+  1095 ;; Data sizes:     COMMON   BANK0   BANK1
+  1096 ;;      Params:         2       0       0
+  1097 ;;      Locals:         2       0       0
+  1098 ;;      Temps:          1       0       0
+  1099 ;;      Totals:         5       0       0
+  1100 ;;Total ram usage:        5 bytes
+  1101 ;; Hardware stack levels used:    1
+  1102 ;; Hardware stack levels required when called:    2
+  1103 ;; This function calls:
+  1104 ;;		_SPI_SendByte
+  1105 ;; This function is called by:
+  1106 ;;		_main
+  1107 ;; This function uses a non-reentrant model
+  1108 ;;
+  1109  0182                     _LT_WriteBUF:	
+  1110                           
+  1111                           ; Regs used in _LT_WriteBUF: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+  1112                           ;LT_WriteBUF@reg stored from wreg
+  1113  0182  00F7               	movwf	LT_WriteBUF@reg
+  1114                           
+  1115                           ;lt89xxdrvspi.c: 90: unsigned char i;
+  1116                           ;lt89xxdrvspi.c: 92: RC2=0;
+  1117  0183  1107               	bcf	7,2
+  1118                           
+  1119                           ;lt89xxdrvspi.c: 93: SPI_SendByte(reg);
+  1120  0184  21BE               	fcall	_SPI_SendByte
+  1121                           
+  1122                           ;lt89xxdrvspi.c: 94: SPI_SendByte(len);
+  1123  0185  0875               	movf	LT_WriteBUF@len,w
+  1124  0186  21BE               	fcall	_SPI_SendByte
+  1125                           
+  1126                           ;lt89xxdrvspi.c: 95: for(i=0; i<len; i++)
+  1127  0187  01F8               	clrf	LT_WriteBUF@i
+  1128  0188                     l3126:	
+  1129  0188  0875               	movf	LT_WriteBUF@len,w
+  1130  0189  0278               	subwf	LT_WriteBUF@i,w
+  1131  018A  1803               	btfsc	3,0
+  1132  018B  2994               	goto	l1744
+  1133                           
+  1134                           ;lt89xxdrvspi.c: 96: SPI_SendByte(pBuf[i]);
+  1135  018C  0878               	movf	LT_WriteBUF@i,w
+  1136  018D  0774               	addwf	LT_WriteBUF@pBuf,w
+  1137  018E  00F6               	movwf	??_LT_WriteBUF
+  1138  018F  0084               	movwf	4
+  1139  0190  0800               	movf	0,w
+  1140  0191  21BE               	fcall	_SPI_SendByte
+  1141  0192  0AF8               	incf	LT_WriteBUF@i,f
+  1142  0193  2988               	goto	l3126
+  1143  0194                     l1744:	
+  1144                           
+  1145                           ;lt89xxdrvspi.c: 99: RC2=1;
+  1146  0194  1507               	bsf	7,2
+  1147  0195  0008               	return
+  1148  0196                     __end_of_LT_WriteBUF:	
+  1149                           
+  1150                           	psect	text210
+  1151  01DD                     __ptext210:	
+  1152 ;; =============== function _LT_WriteBUF ends ============
+  1153                           
+  1154                           
+  1155 ;; *************** function _LT_WriteReg *****************
+  1156 ;; Defined at:
+  1157 ;;		line 78 in file "lt89xxdrvspi.c"
+  1158 ;; Parameters:    Size  Location     Type
+  1159 ;;  reg             1    wreg     unsigned char 
+  1160 ;;  H               1    4[COMMON] unsigned char 
+  1161 ;;  L               1    5[COMMON] unsigned char 
+  1162 ;; Auto vars:     Size  Location     Type
+  1163 ;;  reg             1    6[COMMON] unsigned char 
+  1164 ;; Return value:  Size  Location     Type
+  1165 ;;		None               void
+  1166 ;; Registers used:
+  1167 ;;		wreg, status,2, status,0, pclath, cstack
+  1168 ;; Tracked objects:
+  1169 ;;		On entry : 15F/0
+  1170 ;;		On exit  : 17F/0
+  1171 ;;		Unchanged: FFE80/0
+  1172 ;; Data sizes:     COMMON   BANK0   BANK1
+  1173 ;;      Params:         2       0       0
+  1174 ;;      Locals:         1       0       0
+  1175 ;;      Temps:          0       0       0
+  1176 ;;      Totals:         3       0       0
+  1177 ;;Total ram usage:        3 bytes
+  1178 ;; Hardware stack levels used:    1
+  1179 ;; Hardware stack levels required when called:    2
+  1180 ;; This function calls:
+  1181 ;;		_SPI_SendByte
+  1182 ;; This function is called by:
+  1183 ;;		_main
+  1184 ;;		_LT89XX_INIT
+  1185 ;;		_LT89xx_ModeSet
+  1186 ;;		_write_sync
+  1187 ;; This function uses a non-reentrant model
+  1188 ;;
+  1189  01DD                     _LT_WriteReg:	
+  1190                           
+  1191                           ; Regs used in _LT_WriteReg: [wreg+status,2+status,0+pclath+cstack]
+  1192                           ;LT_WriteReg@reg stored from wreg
+  1193  01DD  00F6               	movwf	LT_WriteReg@reg
+  1194                           
+  1195                           ;lt89xxdrvspi.c: 79: RC2=0;
+  1196  01DE  1283               	bcf	3,5	;RP0=0, select bank0
+  1197  01DF  1107               	bcf	7,2
+  1198                           
+  1199                           ;lt89xxdrvspi.c: 80: SPI_SendByte(reg);
+  1200  01E0  0876               	movf	LT_WriteReg@reg,w
+  1201  01E1  21BE               	fcall	_SPI_SendByte
+  1202                           
+  1203                           ;lt89xxdrvspi.c: 81: SPI_SendByte(H);
+  1204  01E2  0874               	movf	LT_WriteReg@H,w
+  1205  01E3  21BE               	fcall	_SPI_SendByte
+  1206                           
+  1207                           ;lt89xxdrvspi.c: 82: SPI_SendByte(L);
+  1208  01E4  0875               	movf	LT_WriteReg@L,w
+  1209  01E5  21BE               	fcall	_SPI_SendByte
+  1210                           
+  1211                           ;lt89xxdrvspi.c: 83: RC2=1;
+  1212  01E6  1507               	bsf	7,2
+  1213  01E7  0008               	return
+  1214  01E8                     __end_of_LT_WriteReg:	
+  1215                           
+  1216                           	psect	text211
+  1217  0196                     __ptext211:	
+  1218 ;; =============== function _LT_WriteReg ends ============
+  1219                           
+  1220                           
+  1221 ;; *************** function _SPI_ReadByte *****************
+  1222 ;; Defined at:
+  1223 ;;		line 44 in file "lt89xxdrvspi.c"
+  1224 ;; Parameters:    Size  Location     Type
+  1225 ;;		None
+  1226 ;; Auto vars:     Size  Location     Type
+  1227 ;;  mcnt            1    3[COMMON] unsigned char 
+  1228 ;;  retvalue        1    2[COMMON] unsigned char 
+  1229 ;; Return value:  Size  Location     Type
+  1230 ;;                  1    wreg      unsigned char 
+  1231 ;; Registers used:
+  1232 ;;		wreg, status,2, status,0
+  1233 ;; Tracked objects:
+  1234 ;;		On entry : 17F/0
+  1235 ;;		On exit  : 17F/0
+  1236 ;;		Unchanged: FFE80/0
+  1237 ;; Data sizes:     COMMON   BANK0   BANK1
+  1238 ;;      Params:         0       0       0
+  1239 ;;      Locals:         2       0       0
+  1240 ;;      Temps:          0       0       0
+  1241 ;;      Totals:         2       0       0
+  1242 ;;Total ram usage:        2 bytes
+  1243 ;; Hardware stack levels used:    1
+  1244 ;; Hardware stack levels required when called:    1
+  1245 ;; This function calls:
+  1246 ;;		Nothing
+  1247 ;; This function is called by:
+  1248 ;;		_LT_ReadReg
+  1249 ;; This function uses a non-reentrant model
+  1250 ;;
+  1251  0196                     _SPI_ReadByte:	
+  1252                           
+  1253                           ;lt89xxdrvspi.c: 45: unsigned char retvalue=0;
+  1254                           
+  1255                           ; Regs used in _SPI_ReadByte: [wreg+status,2+status,0]
+  1256  0196  01F2               	clrf	SPI_ReadByte@retvalue
+  1257                           
+  1258                           ;lt89xxdrvspi.c: 46: unsigned char mcnt;
+  1259                           ;lt89xxdrvspi.c: 47: RC3=0;
+  1260  0197  1187               	bcf	7,3
+  1261                           
+  1262                           ;lt89xxdrvspi.c: 48: for (mcnt=0;mcnt<8;mcnt++)
+  1263  0198  01F3               	clrf	SPI_ReadByte@mcnt
+  1264  0199                     l1729:	
+  1265                           
+  1266                           ;lt89xxdrvspi.c: 49: {
+  1267                           ;lt89xxdrvspi.c: 50: RC3=1;
+  1268  0199  1587               	bsf	7,3
+  1269                           
+  1270                           ;lt89xxdrvspi.c: 52: retvalue<<=1;
+  1271  019A  1003               	clrc
+  1272  019B  0DF2               	rlf	SPI_ReadByte@retvalue,f
+  1273                           
+  1274                           ;lt89xxdrvspi.c: 53: RC3=0;
+  1275  019C  1187               	bcf	7,3
+  1276                           
+  1277                           ;lt89xxdrvspi.c: 56: if(RA6) retvalue|=1;
+  1278  019D  1F05               	btfss	5,6
+  1279  019E  29A1               	goto	l1731
+  1280  019F  1472               	bsf	SPI_ReadByte@retvalue,0
+  1281  01A0  29A2               	goto	l3086
+  1282  01A1                     l1731:	
+  1283                           
+  1284                           ;lt89xxdrvspi.c: 57: else retvalue&=0xfe;
+  1285  01A1  1072               	bcf	SPI_ReadByte@retvalue,0
+  1286  01A2                     l3086:	
+  1287  01A2  3008               	movlw	8
+  1288  01A3  0AF3               	incf	SPI_ReadByte@mcnt,f
+  1289  01A4  0273               	subwf	SPI_ReadByte@mcnt,w
+  1290  01A5  1C03               	skipc
+  1291  01A6  2999               	goto	l1729
+  1292                           
+  1293                           ;lt89xxdrvspi.c: 59: }
+  1294                           ;lt89xxdrvspi.c: 60: RC3=0;
+  1295  01A7  1187               	bcf	7,3
+  1296                           
+  1297                           ;lt89xxdrvspi.c: 61: return retvalue;
+  1298  01A8  0872               	movf	SPI_ReadByte@retvalue,w
+  1299  01A9  0008               	return
+  1300  01AA                     __end_of_SPI_ReadByte:	
+  1301                           
+  1302                           	psect	text212
+  1303  01BE                     __ptext212:	
+  1304 ;; =============== function _SPI_ReadByte ends ============
+  1305                           
+  1306                           
+  1307 ;; *************** function _SPI_SendByte *****************
+  1308 ;; Defined at:
+  1309 ;;		line 24 in file "lt89xxdrvspi.c"
+  1310 ;; Parameters:    Size  Location     Type
+  1311 ;;  buf             1    wreg     unsigned char 
+  1312 ;; Auto vars:     Size  Location     Type
+  1313 ;;  buf             1    2[COMMON] unsigned char 
+  1314 ;;  mcnt            1    3[COMMON] unsigned char 
+  1315 ;; Return value:  Size  Location     Type
+  1316 ;;		None               void
+  1317 ;; Registers used:
+  1318 ;;		wreg, status,2, status,0
+  1319 ;; Tracked objects:
+  1320 ;;		On entry : 17F/0
+  1321 ;;		On exit  : 17F/0
+  1322 ;;		Unchanged: FFE80/0
+  1323 ;; Data sizes:     COMMON   BANK0   BANK1
+  1324 ;;      Params:         0       0       0
+  1325 ;;      Locals:         2       0       0
+  1326 ;;      Temps:          0       0       0
+  1327 ;;      Totals:         2       0       0
+  1328 ;;Total ram usage:        2 bytes
+  1329 ;; Hardware stack levels used:    1
+  1330 ;; Hardware stack levels required when called:    1
+  1331 ;; This function calls:
+  1332 ;;		Nothing
+  1333 ;; This function is called by:
+  1334 ;;		_LT_ReadReg
+  1335 ;;		_LT_WriteReg
+  1336 ;;		_LT_WriteBUF
+  1337 ;; This function uses a non-reentrant model
+  1338 ;;
+  1339  01BE                     _SPI_SendByte:	
+  1340                           
+  1341                           ; Regs used in _SPI_SendByte: [wreg+status,2+status,0]
+  1342                           ;SPI_SendByte@buf stored from wreg
+  1343  01BE  00F2               	movwf	SPI_SendByte@buf
+  1344                           
+  1345                           ;lt89xxdrvspi.c: 25: unsigned char mcnt;
+  1346                           ;lt89xxdrvspi.c: 26: for(mcnt=0;mcnt<8;mcnt++)
+  1347  01BF  01F3               	clrf	SPI_SendByte@mcnt
+  1348                           
+  1349                           ;lt89xxdrvspi.c: 27: {
+  1350                           ;lt89xxdrvspi.c: 28: RC3=0;
+  1351  01C0  1187               	bcf	7,3
+  1352  01C1                     L1:	
+  1353                           
+  1354                           ;lt89xxdrvspi.c: 30: if(buf&0x80) RA5=1;
+  1355  01C1  1FF2               	btfss	SPI_SendByte@buf,7
+  1356  01C2  29C5               	goto	l1724
+  1357  01C3  1685               	bsf	5,5
+  1358  01C4  29C6               	goto	l1725
+  1359  01C5                     l1724:	
+  1360                           
+  1361                           ;lt89xxdrvspi.c: 31: else RA5=0;
+  1362  01C5  1285               	bcf	5,5
+  1363  01C6                     l1725:	
+  1364  01C6  3008               	movlw	8
+  1365                           
+  1366                           ;lt89xxdrvspi.c: 33: RC3=1;
+  1367  01C7  1587               	bsf	7,3
+  1368                           
+  1369                           ;lt89xxdrvspi.c: 35: buf<<=1;
+  1370  01C8  1003               	clrc
+  1371  01C9  0DF2               	rlf	SPI_SendByte@buf,f
+  1372  01CA  0AF3               	incf	SPI_SendByte@mcnt,f
+  1373  01CB  0273               	subwf	SPI_SendByte@mcnt,w
+  1374                           
+  1375                           ;lt89xxdrvspi.c: 37: }
+  1376                           ;lt89xxdrvspi.c: 38: RC3=0;
+  1377  01CC  1187               	bcf	7,3
+  1378  01CD  1C03               	skipc
+  1379  01CE  29C1               	goto	L1
+  1380                           
+  1381                           ;lt89xxdrvspi.c: 39: RA5=0;
+  1382  01CF  1285               	bcf	5,5
+  1383  01D0  0008               	return
+  1384  01D1                     __end_of_SPI_SendByte:	
+  1385                           
+  1386                           	psect	text213
+  1387  01AA                     __ptext213:	
+  1388 ;; =============== function _SPI_SendByte ends ============
+  1389                           
+  1390                           
+  1391 ;; *************** function _DELAY_MS *****************
+  1392 ;; Defined at:
+  1393 ;;		line 8 in file "lt89xxdrvspi.c"
+  1394 ;; Parameters:    Size  Location     Type
+  1395 ;;  Tms             1    wreg     unsigned char 
+  1396 ;; Auto vars:     Size  Location     Type
+  1397 ;;  Tms             1    4[COMMON] unsigned char 
+  1398 ;;  dly             2    2[COMMON] unsigned int 
+  1399 ;; Return value:  Size  Location     Type
+  1400 ;;		None               void
+  1401 ;; Registers used:
+  1402 ;;		wreg, status,2, status,0
+  1403 ;; Tracked objects:
+  1404 ;;		On entry : 17F/0
+  1405 ;;		On exit  : 17F/0
+  1406 ;;		Unchanged: FFE80/0
+  1407 ;; Data sizes:     COMMON   BANK0   BANK1
+  1408 ;;      Params:         0       0       0
+  1409 ;;      Locals:         3       0       0
+  1410 ;;      Temps:          0       0       0
+  1411 ;;      Totals:         3       0       0
+  1412 ;;Total ram usage:        3 bytes
+  1413 ;; Hardware stack levels used:    1
+  1414 ;; Hardware stack levels required when called:    1
+  1415 ;; This function calls:
+  1416 ;;		Nothing
+  1417 ;; This function is called by:
+  1418 ;;		_LT89XX_INIT
+  1419 ;; This function uses a non-reentrant model
+  1420 ;;
+  1421  01AA                     _DELAY_MS:	
+  1422                           
+  1423                           ; Regs used in _DELAY_MS: [wreg+status,2+status,0]
+  1424                           ;DELAY_MS@Tms stored from wreg
+  1425  01AA  00F4               	movwf	DELAY_MS@Tms
+  1426  01AB                     l3062:	
+  1427                           ;lt89xxdrvspi.c: 10: unsigned int dly;
+  1428                           ;lt89xxdrvspi.c: 11: while(Tms)
+  1429                           
+  1430  01AB  08F4               	movf	DELAY_MS@Tms,f
+  1431  01AC  1903               	btfsc	3,2
+  1432  01AD  0008               	return
+  1433  01AE  308A               	movlw	138
+  1434                           
+  1435                           ;lt89xxdrvspi.c: 12: {
+  1436                           ;lt89xxdrvspi.c: 13: Tms--;
+  1437  01AF  03F4               	decf	DELAY_MS@Tms,f
+  1438                           
+  1439                           ;lt89xxdrvspi.c: 14: dly=650;
+  1440  01B0  00F2               	movwf	DELAY_MS@dly
+  1441  01B1  3002               	movlw	2
+  1442  01B2  00F3               	movwf	DELAY_MS@dly+1
+  1443  01B3                     l3060:	
+  1444                           ;lt89xxdrvspi.c: 15: while(dly) dly--;
+  1445                           
+  1446  01B3  0873               	movf	DELAY_MS@dly+1,w
+  1447  01B4  0472               	iorwf	DELAY_MS@dly,w
+  1448  01B5  1903               	btfsc	3,2
+  1449  01B6  29AB               	goto	l3062
+  1450  01B7  3001               	movlw	1
+  1451  01B8  02F2               	subwf	DELAY_MS@dly,f
+  1452  01B9  3000               	movlw	0
+  1453  01BA  1C03               	skipc
+  1454  01BB  03F3               	decf	DELAY_MS@dly+1,f
+  1455  01BC  02F3               	subwf	DELAY_MS@dly+1,f
+  1456  01BD  29B3               	goto	l3060
+  1457  01BE                     __end_of_DELAY_MS:	
+  1458                           
+  1459                           	psect	text214
+  1460  00F0                     __ptext214:	
+  1461 ;; =============== function _DELAY_MS ends ============
+  1462                           
+  1463                           
+  1464 ;; *************** function _Init *****************
+  1465 ;; Defined at:
+  1466 ;;		line 44 in file "main.c"
+  1467 ;; Parameters:    Size  Location     Type
+  1468 ;;		None
+  1469 ;; Auto vars:     Size  Location     Type
+  1470 ;;		None
+  1471 ;; Return value:  Size  Location     Type
+  1472 ;;		None               void
+  1473 ;; Registers used:
+  1474 ;;		wreg, status,2
+  1475 ;; Tracked objects:
+  1476 ;;		On entry : 17F/0
+  1477 ;;		On exit  : 17F/20
+  1478 ;;		Unchanged: FFE80/0
+  1479 ;; Data sizes:     COMMON   BANK0   BANK1
+  1480 ;;      Params:         0       0       0
+  1481 ;;      Locals:         0       0       0
+  1482 ;;      Temps:          0       0       0
+  1483 ;;      Totals:         0       0       0
+  1484 ;;Total ram usage:        0 bytes
+  1485 ;; Hardware stack levels used:    1
+  1486 ;; Hardware stack levels required when called:    1
+  1487 ;; This function calls:
+  1488 ;;		Nothing
+  1489 ;; This function is called by:
+  1490 ;;		_main
+  1491 ;; This function uses a non-reentrant model
+  1492 ;;
+  1493  00F0                     _Init:	
+  1494                           
+  1495                           ;main.c: 55: OSCCON = 0B01110001;
+  1496                           
+  1497                           ; Regs used in _Init: [wreg+status,2]
+  1498  00F0  3071               	movlw	113
+  1499  00F1  1683               	bsf	3,5	;RP0=1, select bank1
+  1500  00F2  008F               	movwf	15	;volatile
+  1501                           
+  1502                           ;main.c: 58: INTCON = 0;
+  1503  00F3  018B               	clrf	11	;volatile
+  1504                           
+  1505                           ;main.c: 59: PORTA = 0B00000000;
+  1506  00F4  1283               	bcf	3,5	;RP0=0, select bank0
+  1507  00F5  0185               	clrf	5	;volatile
+  1508                           
+  1509                           ;main.c: 60: TRISA = 0B01011111;
+  1510  00F6  305F               	movlw	95
+  1511  00F7  1683               	bsf	3,5	;RP0=1, select bank1
+  1512  00F8  0085               	movwf	5	;volatile
+  1513                           
+  1514                           ;main.c: 61: PORTC = 0B00000000;
+  1515  00F9  1283               	bcf	3,5	;RP0=0, select bank0
+  1516  00FA  0187               	clrf	7	;volatile
+  1517                           
+  1518                           ;main.c: 62: TRISC = 0B00000011;
+  1519  00FB  3003               	movlw	3
+  1520  00FC  1683               	bsf	3,5	;RP0=1, select bank1
+  1521  00FD  0087               	movwf	7	;volatile
+  1522                           
+  1523                           ;main.c: 64: WPUA = 0;
+  1524  00FE  0195               	clrf	21	;volatile
+  1525                           
+  1526                           ;main.c: 65: WPUC = 0;
+  1527  00FF  0188               	clrf	8	;volatile
+  1528                           
+  1529                           ;main.c: 66: OPTION = 0B10001000;
+  1530  0100  3088               	movlw	136
+  1531  0101  0081               	movwf	1	;volatile
+  1532                           
+  1533                           ;main.c: 68: MSCKCON = 0B00000000;
+  1534  0102  1283               	bcf	3,5	;RP0=0, select bank0
+  1535  0103  019B               	clrf	27	;volatile
+  1536                           
+  1537                           ;main.c: 71: CMCON0 = 0B00000111;
+  1538  0104  3007               	movlw	7
+  1539  0105  0099               	movwf	25	;volatile
+  1540                           
+  1541                           ;main.c: 75: T1CON = 0B00000000;
+  1542  0106  0190               	clrf	16	;volatile
+  1543                           
+  1544                           ;main.c: 78: TMR1L = 0XBF;
+  1545  0107  30BF               	movlw	191
+  1546  0108  008E               	movwf	14	;volatile
+  1547                           
+  1548                           ;main.c: 80: TMR1H = 0XE0;
+  1549  0109  30E0               	movlw	224
+  1550  010A  008F               	movwf	15	;volatile
+  1551  010B  3050               	movlw	80
+  1552                           
+  1553                           ;main.c: 81: TMR1IE = 1;
+  1554  010C  1683               	bsf	3,5	;RP0=1, select bank1
+  1555  010D  140C               	bsf	12,0
+  1556                           
+  1557                           ;main.c: 82: TMR1ON = 1;
+  1558  010E  1283               	bcf	3,5	;RP0=0, select bank0
+  1559  010F  1410               	bsf	16,0
+  1560                           
+  1561                           ;main.c: 83: PEIE=1;
+  1562  0110  170B               	bsf	11,6
+  1563                           
+  1564                           ;main.c: 84: GIE = 1;
+  1565  0111  178B               	bsf	11,7
+  1566                           
+  1567                           ;main.c: 89: ADCON1 = 0B01010000;
+  1568  0112  1683               	bsf	3,5	;RP0=1, select bank1
+  1569  0113  009F               	movwf	31	;volatile
+  1570                           
+  1571                           ;main.c: 91: ADCON0 = 0B10001001;
+  1572  0114  3089               	movlw	137
+  1573  0115  1283               	bcf	3,5	;RP0=0, select bank0
+  1574  0116  009F               	movwf	31	;volatile
+  1575                           
+  1576                           ;main.c: 95: ANSEL = 0;
+  1577  0117  1683               	bsf	3,5	;RP0=1, select bank1
+  1578  0118  0191               	clrf	17	;volatile
+  1579  0119  0008               	return
+  1580  011A                     __end_of_Init:	
+  1581                           
+  1582                           	psect	text215
+  1583  016C                     __ptext215:	
+  1584 ;; =============== function _Init ends ============
+  1585                           
+  1586                           
+  1587 ;; *************** function _ISR *****************
+  1588 ;; Defined at:
+  1589 ;;		line 25 in file "main.c"
+  1590 ;; Parameters:    Size  Location     Type
+  1591 ;;		None
+  1592 ;; Auto vars:     Size  Location     Type
+  1593 ;;		None
+  1594 ;; Return value:  Size  Location     Type
+  1595 ;;		None               void
+  1596 ;; Registers used:
+  1597 ;;		wreg, status,2, status,0
+  1598 ;; Tracked objects:
+  1599 ;;		On entry : 0/0
+  1600 ;;		On exit  : 40/0
+  1601 ;;		Unchanged: FFF9F/0
+  1602 ;; Data sizes:     COMMON   BANK0   BANK1
+  1603 ;;      Params:         0       0       0
+  1604 ;;      Locals:         0       0       0
+  1605 ;;      Temps:          2       0       0
+  1606 ;;      Totals:         2       0       0
+  1607 ;;Total ram usage:        2 bytes
+  1608 ;; Hardware stack levels used:    1
+  1609 ;; This function calls:
+  1610 ;;		Nothing
+  1611 ;; This function is called by:
+  1612 ;;		Interrupt level 1
+  1613 ;; This function uses a non-reentrant model
+  1614 ;;
+  1615  016C                     _ISR:	
+  1616                           
+  1617                           ;main.c: 26: GIE=0;
+  1618  016C  138B               	bcf	11,7
+  1619                           
+  1620                           ;main.c: 31: if(TMR1IE && TMR1IF)
+  1621  016D  1683               	bsf	3,5	;RP0=1, select bank1
+  1622  016E  1303               	bcf	3,6	;RP1=0, select bank1
+  1623  016F  1C0C               	btfss	12,0
+  1624  0170  297A               	goto	i1l2838
+  1625  0171  1283               	bcf	3,5	;RP0=0, select bank0
+  1626  0172  1C0C               	btfss	12,0
+  1627  0173  297A               	goto	i1l2838
+  1628  0174  302F               	movlw	47
+  1629                           
+  1630                           ;main.c: 32: {
+  1631                           ;main.c: 33: TMR1IF = 0;
+  1632  0175  100C               	bcf	12,0
+  1633                           
+  1634                           ;main.c: 34: TMR1L = 0X2F;
+  1635  0176  008E               	movwf	14	;volatile
+  1636                           
+  1637                           ;main.c: 35: TMR1H = 0XF8;
+  1638  0177  30F8               	movlw	248
+  1639  0178  008F               	movwf	15	;volatile
+  1640                           
+  1641                           ;main.c: 36: T250uS++;
+  1642  0179  0AFB               	incf	_T250uS,f
+  1643  017A                     i1l2838:	
+  1644                           
+  1645                           ;main.c: 39: }
+  1646                           ;main.c: 40: GIE=1;
+  1647  017A  178B               	bsf	11,7
+  1648  017B  0871               	movf	??_ISR+1,w
+  1649  017C  008A               	movwf	10
+  1650  017D  0E70               	swapf	??_ISR^(0+-128),w
+  1651  017E  0083               	movwf	3
+  1652  017F  0EFE               	swapf	126,f
+  1653  0180  0E7E               	swapf	126,w
+  1654  0181  0009               	retfie
+  1655  0182                     __end_of_ISR:	
+  1656                           
+  1657                           	psect	intentry
+  1658  0004                     __pintentry:	
+  1659                           ; Regs used in _ISR: [wreg+status,2+status,0]
+  1660                           
+  1661  0004                     interrupt_function:	
+  1662  007E                     saved_w	set	btemp
+  1663  0004  00FE               	movwf	btemp
+  1664  0005  0E03               	swapf	3,w
+  1665  0006  00F0               	movwf	??_ISR
+  1666  0007  080A               	movf	10,w
+  1667  0008  00F1               	movwf	??_ISR+1
+  1668  0009  296C               	ljmp	_ISR
+  1669                           
+  1670                           	psect	text216
+  1671  0000                     __ptext216:	
+  1672 ;; =============== function _ISR ends ============
+  1673                           
+  1674  007E                     btemp	set	126	;btemp
+  1675  007E                     wtemp0	set	126
+
+
+HI-TECH Software PICC Macro Assembler V9.83 build 10920 
+Symbol Table                                                                                   Wed Dec 04 12:09:04 2019
+
+                      pc 0002             _SPI_SendByte 01BE                       fsr 0004  
+         LT_WriteBUF@len 0075           LT_WriteBUF@reg 0077             ?_LT89XX_INIT 0070  
+                    l863 0000                      _GIE 005F                      _RA5 002D  
+                    _RC2 003A                      _RA6 002E                      _RC3 003B  
+                    _RA7 002F                      _RC5 003D                      _ISR 016C  
+                    _SR0 0CF6                      _SR1 0CF7                      fsr0 0004  
+                    indf 0000              _LT_WriteBUF 0182          LT_WriteBUF@pBuf 0074  
+            _LT_WriteReg 01DD                     S3214 01D1                     ?_ISR 0070  
+                   l3020 0000                     l3030 0000                     l3022 0000  
+                   l3110 0000                     l3040 0000                     l3032 0000  
+                   l3024 0000                     l3112 0000                     l3120 0000  
+                   l3200 0000                     l3050 0000                     l3042 0000  
+                   l3034 0000                     l3026 0000                     l3114 0000  
+                   l3130 0000                     l3202 0000                     l3052 0000  
+                   l3044 0000                     l3036 0000                     l3028 0000  
+                   l3060 01B3                     l3124 0000                     l3116 0000  
+                   l3132 0000                     l3046 0000                     l3038 0000  
+                   l3062 01AB                     l3054 0000                     l3126 0188  
+                   l3118 0000                     l3134 0000                     l3048 0000  
+                   l3072 0000                     l3064 0000                     l3128 0000  
+                   l3152 0000                     l3144 00CB                     l3136 0000  
+                   l3160 0086                     l3074 0000                     l3090 0000  
+                   l3146 0000                     l3138 0000                     l3170 00AA  
+                   l3162 0094                     l1731 01A1                     l1724 01C5  
+                   l3076 0000                     l3148 0000                     l3172 00AF  
+                   l3164 0099                     l1725 01C6                     l1733 0000  
+                   l1726 0000                     l3086 01A2                     l3078 0000  
+                   l3174 00B4                     l3166 009D                     l3158 0000  
+                   l3182 0000                     l3190 011F                     l1719 0000  
+                   l3088 0000                     l1744 0194                     l1736 0000  
+                   l1760 0000                     l3168 00A5                     l3184 0000  
+                   l1729 0199                     l1745 0000                     l1754 00C3  
+                   l3194 0000                     l3186 0000                     l1739 0000  
+                   l3196 0000                     l3188 0000                     l1774 0085  
+                   l3198 0000                     l1777 0000                     _PEIE 005E  
+                   _STRA 0CE8                     _STRB 0CE9                     _STRC 0CEA  
+                   _STRD 0CEB                     _WREN 0C62                     _WPUA 0095  
+                   _WPUC 0088                     _RegH 0079                     _RegL 007A  
+                   _Init 00F0           LT_WriteReg@reg 0076                     _main 011A  
+                   btemp 007E                     start 000A         __end_of_DELAY_MS 01BE  
+                  ??_ISR 0070                    ?_Init 0070                    _C1SEN 0CF5  
+                  _C2REN 0CF4                    ?_main 0070                    _EEPGD 0C67  
+                  _ANSEL 0091                    _T1CON 0010                    i1l860 0000  
+                  _TMR1H 000F                    _TMR1L 000E                    _PORTA 0005  
+                  _PORTC 0007                    _SRCON 019E                    _PULSR 0CF2  
+                  _PULSS 0CF3                    _TRISA 0085                    _TRISC 0087  
+       SPI_ReadByte@mcnt 0073                    pclath 000A                    status 0003  
+                  wtemp0 007E       LT89XX_INIT@CFG_CNT 0077              ?_LT_ReadReg 0070  
+           __end_of_Init 011A             __end_of_main 0139                   ??_Init 0072  
+                 ??_main 0079                   _ADCON0 001F                   _ADCON1 009F  
+                 _T250uS 007B                   _CMCON0 0019                   i1l2834 0000  
+                 i1l2836 0000                   i1l2828 0000                   i1l2838 017A  
+                 _INTCON 000B                   _OSCCON 008F                   _TMR1IE 0460  
+                 _TMR1IF 0060                   _OPTION 0081                   _TMR1ON 0080  
+        SPI_SendByte@buf 0072                   _txdata 0020       LT89xx_ModeSet@dat1 0077  
+                 saved_w 007E     __size_of_LT89XX_INIT 002D                ?_DELAY_MS 0070  
+    __size_of_LT_ReadReg 000A            LT_ReadReg@reg 0074             LT_WriteBUF@i 0078  
+           LT_WriteReg@H 0074             LT_WriteReg@L 0075           __pcstackCOMMON 0070  
+           __pidataBANK0 0000  __size_of_LT89xx_ModeSet 0042             ?_LT_WriteBUF 0074  
+           ?_LT_WriteReg 0074               ??_DELAY_MS 0072               __pmaintext 011A  
+             __pintentry 0004                  _MSCKCON 001B                  _PSTRCON 019D  
+                _STRSYNC 0CEC         SPI_SendByte@mcnt 0073             ??_LT_ReadReg 0074  
+           __size_of_ISR 0016       __end_of_LT_ReadReg 01F2     end_of_initialization 0154  
+         _LT89xx_ModeSet 0077     __size_of_LT_WriteBUF 0014     __size_of_LT_WriteReg 000B  
+      __size_of_DELAY_MS 0014            ?_SPI_ReadByte 0070            ?_SPI_SendByte 0070  
+ __end_of_LT89xx_ModeSet 00B9               _write_sync 0156            ??_LT89XX_INIT 0077  
+    start_initialization 0139              __end_of_ISR 0182           ??_SPI_ReadByte 0072  
+         ??_SPI_SendByte 0072              __pdataBANK0 0020          ?_LT89xx_ModeSet 0070  
+            __pbssCOMMON 0079      __end_of_LT89XX_INIT 00F0                __ptext210 01DD  
+              __ptext211 0196                __ptext212 01BE                __ptext213 01AA  
+              __ptext205 0156                __ptext214 00F0                __ptext206 0077  
+              __ptext215 016C                __ptext207 00C3                __ptext216 0000  
+              __ptext208 01E8                __ptext209 0182              ?_write_sync 0070  
+              __pstrings 000B                __pswtext1 01D1                 _DELAY_MS 01AA  
+          _LDT8900config 0011        interrupt_function 0004     SPI_ReadByte@retvalue 0072  
+            __stringbase 0010              _LT89XX_INIT 00C3              DELAY_MS@Tms 0074  
+            DELAY_MS@dly 0072     __end_of_SPI_ReadByte 01AA     __end_of_SPI_SendByte 01D1  
+    __size_of_write_sync 0016            ??_LT_WriteBUF 0076            ??_LT_WriteReg 0076  
+          __size_of_Init 002A            __size_of_main 001F         ??_LT89xx_ModeSet 0077  
+               intlevel1 0000      __end_of_LT_WriteBUF 0196      __end_of_LT_WriteReg 01E8  
+              stringcode 000B    __size_of_SPI_ReadByte 0014             ??_write_sync 0077  
+  __size_of_SPI_SendByte 0013                 stringdir 000B                 stringtab 000B  
+     __end_of_write_sync 016C             _SPI_ReadByte 0196               _LT_ReadReg 01E8  
