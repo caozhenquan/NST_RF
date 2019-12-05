@@ -1,0 +1,13 @@
+_DELAY_MS: CODE, 426 0 20
+_ISR: CODE, 364 0 22
+_main: CODE, 282 0 31
+_LT_ReadReg: CODE, 488 0 10
+_write_sync: CODE, 342 0 22
+_LT89xx_ModeSet: CODE, 119 0 66
+_SPI_ReadByte: CODE, 406 0 20
+_Init: CODE, 240 0 42
+_SPI_SendByte: CODE, 446 0 19
+_LT89XX_INIT: CODE, 195 0 45
+_LT_WriteBUF: CODE, 386 0 20
+_LT_WriteReg: CODE, 477 0 11
+Total: 328
